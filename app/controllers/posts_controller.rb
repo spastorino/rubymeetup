@@ -4,11 +4,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @ongoing = Post.where(:category => 'ongoing')
-    @upcoming = Post.where(:category => 'upcoming')
-    @this_week = Post.where(:category => 'this_week')
-    @picks = Post.where(:featured => true).order(:priority)
-    @ranking = Post.order(:like_count)
+    @presenter = PostsPresenter.new
   end
 
   # GET /posts/1
@@ -29,15 +25,7 @@ class PostsController < ApplicationController
   # it should always erase all old picks
   # and replace them if new pick ids are provided.
   def save_picks
-    Post.where(:featured => true).update_all(:featured => false, :priority => nil)
-    if params[:featured_pick_ids].present?
-      featured_picks = Post.find(params[:featured_pick_ids]).sort_by{|p| params[:featured_pick_ids].index(p.id.to_s) }
-      featured_picks.each_with_index do |f, i|
-        f.featured = true
-        f.priority = i
-        f.save
-      end
-    end
+    Post.toggle_feature(params[:featured_pick_ids].map(&:to_i))
     render :nothing => true
   end
 

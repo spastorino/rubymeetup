@@ -3,22 +3,22 @@
 <div id="categories">
   <h4> Ongoing </h4>
   <ol class="post-category">
-    <%= render @ongoing %>
+    <%= render @post_presenter.ongoing %>
   </ol>
   <h4> Upcoming </h4>
   <ol class="post-category">
-    <%= render @upcoming %>
+    <%= render @post_presenter.upcoming %>
   </ol>
   <h4> This week </h4>
   <ol class="post-category">
-    <%= render @this_week %>
+    <%= render @post_presenter.this_week %>
   </ol>
 </div>
 
 <div id="featured" data-save-picks-url="<%= save_picks_path %>">
   <h4> Featured </h4>
   <ol class="post-category">
-    <%= render @picks %>
+    <%= render @post_presenter.picks %>
   </ol>
   <%= link_to 'Save', 'javascript:;', :id => 'submit-picks' %>
 </div>
@@ -26,6 +26,6 @@
 <div id="ranking">
   <h4> Ranking (Ordered by like count)</h4>
   <ol>
-    <%= render @ranking %>
+    <%= render @post_presenter.ranking %>
   </ol>
 </div>

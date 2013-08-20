@@ -24,5 +24,7 @@ module Blog
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    dirs = ['queries', 'presenters', 'services']
+     config.autoload_paths += dirs.collect { |dir| Rails.root.join('app', dir) }
   end
 end

@@ -4,11 +4,11 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @ongoing = Post.where(:category => 'ongoing')
-    @upcoming = Post.where(:category => 'upcoming')
-    @this_week = Post.where(:category => 'this_week')
-    @picks = Post.where(:featured => true).order(:priority)
-    @ranking = Post.order(:like_count)
+    @ongoing   = Post.where(category: 'ongoing')
+    @upcoming  = Post.where(category: 'upcoming')
+    @this_week = Post.where(category: 'this_week')
+    @picks     = Post.where(featured: true).order(:priority)
+    @ranking   = Post.order(:like_count)
   end
 
   # GET /posts/1

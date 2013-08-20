@@ -2,10 +2,10 @@ class PostPresenter
   attr_reader :ongoing, :upcoming, :this_week, :picks, :ranking
 
   def initialize
-    @ongoing   = Post.where(category: 'ongoing')
-    @upcoming  = Post.where(category: 'upcoming')
-    @this_week = Post.where(category: 'this_week')
-    @picks     = Post.where(featured: true).order(:priority)
-    @ranking   = Post.order(:like_count)
+    @ongoing   = Post.with_category('ongoing')
+    @upcoming  = Post.with_category('upcoming')
+    @this_week = Post.with_category('this_week')
+    @picks     = Post.picks
+    @ranking   = Post.ranking
   end
 end

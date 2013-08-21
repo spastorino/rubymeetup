@@ -13,6 +13,8 @@ Bundler.require(:default, Rails.env)
 
 module Blog
   class Application < Rails::Application
+    app_dirs = ["presenters"]
+    config.autoload_paths += app_dirs.collect { |dir| Rails.root.join("app", dir) }
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

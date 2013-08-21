@@ -3,7 +3,7 @@
 <div id="categories">
   <h4> Ongoing </h4>
   <ol class="post-category">
-    <% @ongoing.each do |post| %>
+    <% @page.ongoing.each do |post| %>
       <li data-post-id="<%= post.id %>">
         <%= post.title %>
       </li>
@@ -11,7 +11,7 @@
   </ol>
   <h4> Upcoming </h4>
   <ol class="post-category">
-    <% @upcoming.each do |post| %>
+    <% @page.upcoming.each do |post| %>
       <li data-post-id="<%= post.id %>">
         <%= post.title %>
       </li>
@@ -19,7 +19,7 @@
   </ol>
   <h4> This week </h4>
   <ol class="post-category">
-    <% @this_week.each do |post| %>
+    <% @page.this_week.each do |post| %>
       <li data-post-id="<%= post.id %>">
         <%= post.title %>
       </li>
@@ -30,7 +30,7 @@
 <div id="featured" data-save-picks-url="<%= save_picks_path %>">
   <h4> Featured </h4>
   <ol class="post-category">
-    <% @picks.each do |post| %>
+    <% @page.picks.each do |post| %>
       <li data-post-id="<%= post.id %>">
       <%= post.title %>
       </li>
@@ -43,7 +43,7 @@
 <div id="ranking">
   <h4> Ranking (Ordered by like count)</h4>
   <ol>
-    <% @ranking.each do |post| %>
+    <% @page.ranking.each do |post| %>
       <li>
       <%= post.title %>
       </li>
